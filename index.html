@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de Producto</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      
+    </style>
+</head>
+<body>
+    <form>
+        <section class="form-section">
+            <article class="product-entry">
+                <h2>Ingresar Producto</h2>
+                <form id="formEnviado">
+                    <label for='codigo'>Código:<input type='number' id='codigo' required></label>
+                    <label for='nombre'>Nombre:<input type='text' id='nombre' required></label>
+                    <label for='cantidad'>Cantidad:<input type='number' id='cantidad' required></label>
+                    <label for='costo'>Costo:<input type='number' id='costo' required></label>
+                    <button type='add' id='btnAdd'>Agregar</button>
+                </form>
+                <button type='button' id='btnList'>Listar</button>
+                <button type='button' id='btnListInv'>Listar invertido</button>
+                <button type='button' id='btnExtr'>Extraer primer producto</button>
+                <button type='button' id='btnExtrUlt'>Extraer ultimo producto</button>
+            </article>
+        
+            <article class="search-delete">
+                <h2>Buscar</h2>
+                <label for='buscar'>Código:<input type='number' id='buscar'></label>
+                <button type='button' id='btnBusc'>Buscar</button>
+        
+                <h2>Eliminar</h2>
+                <label for='eliminar'>Código:<input type='number' id='eliminar'></label>
+                <button type='button' id='btnElim'>Eliminar</button>
+            </article>
+        </section>
+        
+        
+        
+    </form>
+    <div id="detalles" class="flexWrap"></div>
+    <script src="app.js"></script>
+</body>
+</html>
