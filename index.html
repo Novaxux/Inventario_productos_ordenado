@@ -10,16 +10,16 @@
     </style>
 </head>
 <body>
-    <form>
         <section class="form-section">
             <article class="product-entry">
                 <h2>Ingresar Producto</h2>
-                <form id="formEnviado">
+                <form id="formSubmit">
                     <label for='codigo'>Código:<input type='number' id='codigo' required></label>
                     <label for='nombre'>Nombre:<input type='text' id='nombre' required></label>
                     <label for='cantidad'>Cantidad:<input type='number' id='cantidad' required></label>
                     <label for='costo'>Costo:<input type='number' id='costo' required></label>
-                    <button type='add' id='btnAdd'>Agregar</button>
+                    <button type="submit">Agregar</button>
+                    
                 </form>
                 <button type='button' id='btnList'>Listar</button>
                 <button type='button' id='btnListInv'>Listar invertido</button>
@@ -36,11 +36,7 @@
                 <label for='eliminar'>Código:<input type='number' id='eliminar'></label>
                 <button type='button' id='btnElim'>Eliminar</button>
             </article>
-        </section>
-        
-        
-        
-    </form>
+        </section>        
     <div id="detalles" class="flexWrap"></div>
     <script src="app.js"></script>
 </body>

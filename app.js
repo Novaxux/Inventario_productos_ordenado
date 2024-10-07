@@ -120,9 +120,8 @@ function limpiarCasillas() {
   document.getElementById('cantidad').value='';
   document.getElementById('costo').value='';
 }
-  const btnAdd=document.getElementById('btnAdd');
-
-  btnAdd.addEventListener('click',()=>{
+  document.getElementById('formSubmit').addEventListener('submit',function (e){
+    e.preventDefault();
     // recuperar cajas de texto y crear objeto
     let { cod, nom, cant, cost } = obtenerValores();
     let nuevo=new Producto(cod,nom,cant,cost);
@@ -132,7 +131,6 @@ function limpiarCasillas() {
     agregado ?  div.innerHTML = '<p>Nuevo</p>' + nuevo.infoHtml() : 
     div.innerHTML = '<p>Ya existe</p>'
     limpiarCasillas()
-    
   });
  
   const btnList=document.getElementById('btnList');
