@@ -21,28 +21,13 @@ class Producto {
       this.datos=[];
     }
     agregar(producto){
-      let encontrado = this.buscarBinario(this.datos,producto.codigo)
+      let encontrado = this.buscarBinario(producto.codigo)
       if(!encontrado.encontrado){
-        this.datos.push(producto);
-        this.datos = this._ordenarArray();
+        this._insertar(producto,encontrado.limInferior)
         return true
       }else
         return false
     }
-    _ordenarArray (){
-      let arrOrdenado = []
-      let posicion = null
-      arrOrdenado[0] = this.datos[0];
-      for (let i = 1; i < this.datos.length; i++){
-        if (this.datos[i].codigo >= arrOrdenado[arrOrdenado.length - 1].codigo){
-          arrOrdenado.push(this.datos[i]);
-      }else{
-          posicion = this.buscarBinario(arrOrdenado,this.datos[i].codigo).limInferior
-          this._insertar(arrOrdenado,this.datos[i],posicion)
-        }
-      }
-      return arrOrdenado
-  }
     extraerUltimoProducto(){
       let extraer = this.datos.pop()
       return extraer
@@ -55,7 +40,7 @@ class Producto {
         return extraer
     }
     eliminar(codigo){
-      let buscar = this.buscarBinario(this.datos,codigo)
+      let buscar = this.buscarBinario(codigo)
       let elemento = buscar.medio
       let encontrada = buscar.encontrado
       if(encontrada){
@@ -65,19 +50,19 @@ class Producto {
       }
           return encontrada
     }
-    buscarBinario(array,codigo){
+    buscarBinario(codigo){
         let limInferior = 0
-        let limSuperior = array.length - 1
+        let limSuperior = this.datos.length - 1
         let encontrado = false
         let medio = null
         let elemento = null
         while(limInferior <= limSuperior && !encontrado){
           medio = Math.floor((limInferior + limSuperior) / 2)
-            if(array[medio].codigo == codigo){
+            if(this.datos[medio].codigo == codigo){
               encontrado = true
-              elemento = array[medio]
+              elemento = this.datos[medio]
             }
-             else if(array[medio].codigo < codigo)
+             else if(this.datos[medio].codigo < codigo)
                     limInferior = medio + 1
                     else
                         limSuperior = medio - 1
@@ -98,10 +83,10 @@ class Producto {
             res += this.datos[i].infoHtml();
       return res;
     }
-    _insertar(arreglo,valor,posicion){
-      for (let i = arreglo.length;i > posicion; i--)
-          arreglo[i] = arreglo[i-1]
-      arreglo[posicion] = valor
+    _insertar(valor,posicion){
+      for (let i = this.datos.length;i > posicion; i--)
+          this.datos[i] = this.datos[i-1]
+      this.datos[posicion] = valor
   }  
 }
  
@@ -175,6 +160,6 @@ function limpiarCasillas() {
     let elemento=document.getElementById('buscar').value;
     
     let div=document.getElementById('detalles');
-    let elementoEncontrado = inventario.buscarBinario(inventario.datos,elemento).elemento
+    let elementoEncontrado = inventario.buscarBinario(elemento).elemento
     div.innerHTML = elementoEncontrado ? elementoEncontrado.infoHtml() : '<p>No encontrada</p>';
  });
