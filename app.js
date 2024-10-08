@@ -41,14 +41,13 @@ class Producto {
     }
     eliminar(codigo){
       let buscar = this.buscarBinario(codigo)
-      let elemento = buscar.medio
-      let encontrada = buscar.encontrado
-      if(encontrada){
-          for (let f = elemento; f < this.datos.length-1; f++)
+      
+      if(buscar.encontrado){
+          for (let f = buscar.medio; f < this.datos.length-1; f++)
                 this.datos[f] = this.datos[f + 1];
                 this.datos.pop();
       }
-          return encontrada
+          return buscar.encontrado
     }
     buscarBinario(codigo){
         let limInferior = 0
